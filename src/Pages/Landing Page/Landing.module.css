@@ -1,10 +1,6 @@
 .main {
   background-image: url('https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600');
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
 }
 
 .main__sec {
@@ -12,6 +8,7 @@
   height: 100%;
   margin: auto;
   background-color: #0706069b;
+  padding: 5px 8px;
 }
 
 .navbar__section {
@@ -61,8 +58,13 @@
   font-style: italic;
   color: #e06011;
   font-weight: 700;
+  cursor: pointer;
   font-size: 20px;
   text-shadow: #000 5px 5px 5px;
+}
+
+.navbar__link:hover {
+  font-size: 25px;
 }
 
 .hero__main {
@@ -99,11 +101,17 @@
   transform: rotate(-18deg);
 }
 
+.mid_h2 {
+  align-self: center;
+  text-align: center;
+}
+
 .add_sec {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 0px 10px;
+  margin: 15px auto;
 }
 
 .add_btn {
@@ -118,9 +126,28 @@
   border-radius: 5px;
 }
 
+.add_btn:hover {
+  color: #e75e08;
+  background-color: #fff;
+  transition: 1s;
+}
+
 .add_span {
   color: #291305;
   padding: 3px;
   font-size: 25px;
   font-weight: 700;
+}
+
+.create {
+  background-color: #4242437f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
