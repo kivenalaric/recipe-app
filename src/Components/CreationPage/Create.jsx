@@ -6,51 +6,51 @@ import MyContext from '../Context/context';
 import CreateCss from './create.module.css';
 
 function Create() {
-  const {
-    isOpen,
-    setIsOpen,
-    list,
-    updateList,
-    title,
-    setTitle,
-    caption,
-    setCaption,
-    ingredients,
-    setIngredients,
-    procedure,
-    setProcedure,
-  } = useContext(MyContext);
+  const { isOpen, setIsOpen, list, updateList } = useContext(MyContext);
   //   const addList = (event) => {};
 
   const closePopUp = () => {
     setIsOpen(!isOpen);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const { log, clear } = console;
+    clear();
+    log(e.target);
+    const { image, title, caption, ingredients, procedure } = e.target;
+    const url = URL.createObjectURL(image.files[0]);
     const listItems = {
-      title,
-      caption,
-      ingredients,
-      procedure,
+      id: list.pop().id + 1,
+      src: url,
+      showRecipe: false,
+      caption: caption.value,
+      ingredients: ingredients.value,
+      procedure: procedure.value,
+      title: title.value,
+      favorite: false,
     };
 
-    updateList([...list, listItems]);
-    setTitle('');
-    setIngredients('');
-    setCaption('');
-    setProcedure('');
+    const localList = JSON.parse(localStorage.getItem('list'));
+
+    log('this localList and listitem', localList, listItems);
+
+    localStorage.setItem('list', JSON.stringify([...localList, listItems]));
+
+    // updateList([...list, listItems]);
+    updateList([...localList, listItems]);
   };
 
-  useEffect(() => {
-    localStorage.setItem('list', JSON.stringify(list));
-  }, [list]);
+  // useEffect(() => {
+  //   if (list) localStorage.setItem('list', JSON.stringify(list));
+  // }, [list]);
 
   return (
     <div className={CreateCss.create_main}>
       <button type="button" className={CreateCss.delete} onClick={closePopUp}>
         X
       </button>
-      <form action="" onSubmit={(e) => e.preventDefault}>
+      <form action="" onSubmit={handleSubmit}>
         <h1 className={CreateCss.create_h1}>Create Your Recipe</h1>
         <div>
           <input type="file" id="picture" name="image" />
@@ -60,8 +60,6 @@ function Create() {
             type="text"
             id="title"
             name="title"
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
             placeholder="Please input Tittle"
             className={CreateCss.title}
           />
@@ -69,8 +67,6 @@ function Create() {
           <input
             type="text"
             id="caption"
-            onChange={(e) => setCaption(e.target.value)}
-            value={caption}
             name="caption"
             placeholder="Please type a short caption"
             className={CreateCss.caption}
@@ -78,8 +74,6 @@ function Create() {
           <label htmlFor="ingredients">Ingredients:</label>
           <input
             type="text"
-            onChange={(e) => setIngredients(e.target.value)}
-            value={ingredients}
             id="ingredients"
             name="ingredients"
             placeholder="List your ingredients"
@@ -89,17 +83,11 @@ function Create() {
           <input
             name="procedure"
             id="procedure"
-            onChange={(e) => setProcedure(e.target.value)}
-            value={procedure}
             placeholder="Describe your procedure"
             className={CreateCss.procedure}
           />
           <div className={CreateCss.create_sec}>
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              className={CreateCss.create}
-            >
+            <button type="submit" className={CreateCss.create}>
               Create +
             </button>
           </div>
