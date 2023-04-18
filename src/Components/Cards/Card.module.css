@@ -150,7 +150,8 @@
 .display {
   font-size: 18px;
   font-weight: 400;
-  width: 300px;
+  width: 500px;
+  max-width: fit-content;
   padding: 0.5em 1em;
   background-color: #393939e2;
   border: 2px solid #fcfbfbce;
@@ -159,8 +160,9 @@
   flex-direction: column;
   color: #fff;
   z-index: 2;
+  height: 100%;
   max-height: fit-content;
-  height: 400px;
+  overflow-y: auto;
   animation: slideInLeft 1s ease-in-out 1;
   transform: translateX(300px);
   position: absolute;
@@ -175,7 +177,6 @@
   bottom: 0;
   display: flex;
   justify-content: space-between;
-  justify-self: end;
 }
 
 .edit_btn {
