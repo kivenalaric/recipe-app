@@ -162,7 +162,7 @@
   z-index: 2;
   height: 100%;
   max-height: fit-content;
-  overflow-y: auto;
+  overflow-y: hidden;
   animation: slideInLeft 1s ease-in-out 1;
   transform: translateX(300px);
   position: absolute;
