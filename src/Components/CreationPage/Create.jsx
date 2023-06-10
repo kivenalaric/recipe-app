@@ -39,6 +39,7 @@ function Create() {
 
     // updateList([...list, listItems]);
     updateList([...localList, listItems]);
+    setIsOpen(false);
   };
 
   // useEffect(() => {
