@@ -1,0 +1,68 @@
+.create_main {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  padding: 10px;
+  gap: 10px;
+  color: #fff;
+  background-color: #303030;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.create_h1 {
+  font-family: 'Lobster';
+  text-align: center;
+  font-size: 45px;
+  color: #ff6512;
+  text-shadow: #ffffff77 5px 2px 3px;
+}
+
+.procedure {
+  height: 150px;
+  max-height: fit-content;
+}
+
+input {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+.delete {
+  align-self: flex-end;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #ec5706;
+  font-size: larger;
+}
+
+.create_sec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create {
+  justify-self: center;
+  font-size: larger;
+  font-family: 'Lobster';
+  color: #ea590a;
+  border: none;
+  border-radius: 5px;
+  padding: 3px 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.create:hover {
+  background-color: #ff5d0563;
+  color: #fff;
+  transition: 1s;
+}
